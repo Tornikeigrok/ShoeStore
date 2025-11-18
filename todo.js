@@ -196,9 +196,7 @@ function mouseMove (e){
 
 
   startX = box.offsetLeft - distanceX;
-  const widthBoundary = window.innerWidth - box.offsetWidth;
-    
-
+  
   
 }
 function mouseUp(){

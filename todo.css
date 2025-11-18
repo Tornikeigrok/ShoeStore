@@ -126,11 +126,12 @@ header ul li:not(:nth-child(4)) a:hover {
 #btn {
     padding: 0.3rem;
     border-radius: 5px;
-    background-color: rgb(226, 226, 226);
+    background-color: rgb(0, 0, 0);
+    color:white;
 }
 
 #btn:hover {
-    background-color: rgb(207, 207, 207);
+    background-color: rgb(88, 88, 88);
 }
 
 .main-content {
