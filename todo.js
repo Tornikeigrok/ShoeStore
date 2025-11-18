@@ -24,7 +24,7 @@ dropdownOpts.forEach((el) => {
   })
 })
 
- 
+
 const priceMap = {
   all: () => true,
   low: (x) => x <= 200,
@@ -151,16 +151,18 @@ reset.addEventListener('click', () => {
     el.style.display = 'block';
     message.style.display = 'none';
   })
-  userMake = ['all'];
+
   userColor = 'all';
   userGender = 'all';
+  userMake = ['all'];
   userPrice = 'all';
 
   [...selectBrand, ...selectColor, ...selectGender, ...selectPrice]
-    .forEach((el => el.classList.remove('bg')));
-  filter();
+    .forEach((el) => {
+      el.classList.remove('bg');
+      message.style.display = 'none';
+    })
 })
-
 
 //calling functions
 genderLoop();
@@ -168,36 +170,96 @@ brandLoop();
 priceLoop();
 colorLoop();
 
-
-
+//Background Theme Section-------------------------------------------
 
 //Background changing theme section --------------
 const box = document.getElementById('box');
 const boxBorder = document.querySelector('.box-wrap');
 
-const coords = boxBorder.getBoundingClientRect();
-console.log(coords);
-
-
-
 let distanceX = 0, newX = 0;
 
-box.addEventListener('mousedown', (e)=>{
+box.addEventListener('mousedown', (e) => {
   newX = e.clientX;
 
   document.addEventListener('mousemove', mouseMove);
   document.addEventListener('mouseup', mouseUp);
 })
 
-function mouseMove (e){
+
+//ON RELOAD
+const savedBg = localStorage.getItem('theme');
+
+if (savedBg === 'white') {
+  document.body.classList.remove('halfDark', 'fullDark');
+  box.classList.remove('halfColor', 'fullColor');
+}
+if (savedBg === 'grey') {
+  document.body.classList.add('halfDark');
+  box.classList.add('halfColor');
+}
+if (savedBg === 'black') {
+  document.body.classList.add('fullDark');
+  box.classList.add('fullColor');
+  document.body.classList.remove('halfDark');
+  box.classList.remove('halfColor');
+}
+
+//Ensure savedTheme doesnt store null on reload
+const savedTheme = localStorage.getItem('coords');
+if(savedTheme !== null){
+  box.style.left = savedTheme + 'px';
+}
+
+//mouseMove function
+function mouseMove(e) {
+  const coords = boxBorder.getBoundingClientRect();
+  const maxRight = coords.width - box.offsetWidth - 4.5;
+  const halfWidth = coords.width / 2;
+  const quarterWidth = coords.width / 3;
+  console.log(halfWidth);
+  console.log(quarterWidth);
+
   //calculate distance moved
   distanceX = newX - e.clientX;
   newX = e.clientX;
 
-
   startX = box.offsetLeft - distanceX;
-  
+  if (startX < 0) {
+    startX = 0;
+  }
+  if (startX > maxRight) {
+    startX = maxRight;
+  }
+
+  //background change
+  if (startX <= 0) {
+    document.body.classList.remove('fullDark', 'halfDark');
+    box.classList.remove('fullColor', 'halfColor');
+    themeMode = 'white'
+  }
+  else if (startX > quarterWidth && startX <= halfWidth) {
+    document.body.classList.add('halfDark');
+    document.body.classList.remove('fullDark');
+    box.classList.add('halfColor');
+    box.classList.remove('fullColor');
+    themeMode = 'grey'
+  }
+  else if (startX > halfWidth) {
+    document.body.classList.add('fullDark');
+    document.body.classList.remove('halfDark');
+    box.classList.add('fullColor');
+    box.classList.remove('halfColor');
+    themeMode = 'black';
+  }
+  else {
+    document.body.classList.remove('fullDark', 'halfDark');
+    box.classList.remove('fullColor', 'halfColor');
+    themeMode = 'white';
+  }
+  box.style.left = startX + 'px';
 }
-function mouseUp(){
+function mouseUp() {
   document.removeEventListener('mousemove', mouseMove);
+  localStorage.setItem('coords', box.offsetLeft);
+  localStorage.setItem('theme', themeMode);
 }

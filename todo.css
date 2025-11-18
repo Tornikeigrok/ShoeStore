@@ -11,6 +11,7 @@ body {
     flex-direction: column;
     height: 100%;
     overflow: hidden;
+    transition: all 0.7s ease;
 }
 
 html {
@@ -40,9 +41,21 @@ html {
 #box {
     position: absolute;
     top: 50%;
-    left: 3px;
+    left: 0;
     transform: translateY(-50%);
     font-size: 11px;
+}
+body.halfDark{
+    background-color: rgb(72, 72, 72);
+}
+#box.halfColor{
+    color:rgb(199, 198, 198);
+}
+#box.fullColor{
+    color:white;
+}
+body.fullDark{
+    background-color: black;
 }
 .resultTwo{
     display: flex;
