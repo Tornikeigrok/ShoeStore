@@ -12,7 +12,7 @@ body {
     height: 100%;
     overflow: hidden;
 }
- 
+
 html {
     height: 100%;
 }
@@ -23,7 +23,18 @@ html {
     height: 15px;
     position: relative;
     border-radius: 3px;
+}
 
+
+.topic {
+    font-weight: bold;
+    padding-left: 0.5rem;
+    margin-top: 0.3rem;
+   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   padding:0.7rem;
 }
 
 #box {
@@ -33,6 +44,27 @@ html {
     transform: translateY(-50%);
     font-size: 11px;
 }
+.resultTwo{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+#line{
+    width:7px;
+    background-color: rgb(0, 0, 0);
+    height:1px;
+}
+.numeofResults{
+    display: flex;
+    align-items: center;
+    gap:0.3rem;
+    font-size: 9px;
+}
+
+#result{
+    font-size: 7px;
+    color:rgb(128, 128, 128);
+}
 
 header {
     margin: 0.3rem;
@@ -40,7 +72,7 @@ header {
     justify-content: space-between;
     font-size: 16px;
     border: 1px solid transparent;
-    background-color: rgb(245, 245, 245);
+    background-color: rgb(247, 247, 247);
     width: 100%;
     margin: auto
 }
@@ -79,10 +111,9 @@ header ul li a {
     transition: color 0.1s ease;
 }
 
-header ul li:not(:nth-child(4)) a:hover {
+header ul li:nth-child(1):hover a, header ul li:nth-child(2) a:hover{
     color: rgb(148, 148, 148);
 }
-
 
 .moveWrap {
     position: relative;
@@ -91,12 +122,23 @@ header ul li:not(:nth-child(4)) a:hover {
     width: 100%;
     margin: 0.5rem 0;
 }
+.moveWrap, .topic{
+    margin-top: 0.7rem;
+}
 
 .currentShoes {
-    font-size: 9px;
+    font-size: 10px;
     display: inline-block;
+    gap:2rem;
     padding-left: 100%;
-
+   
+}
+.currentShoes p{
+    
+   text-align: center;
+}
+.currentShoes p:nth-child(2){
+    font-size: 9px;
 }
 
 @keyframes scroll {
@@ -119,20 +161,35 @@ header ul li:not(:nth-child(4)) a:hover {
 
 .top-header-contenr ul {
     display: flex;
-    gap: 0.5rem;
+    gap: 0.7rem;
     list-style: none;
 }
-
+.top-header-contenr ul li{
+    border-right: 1px solid rgb(136, 136, 136);
+    padding-right:0.5rem
+}
+.top-header-contenr p a{
+    color:black
+}
+.top-header-contenr p{
+    font-size: 6px;;
+}
 #btn {
     padding: 0.3rem;
-    border-radius: 5px;
-    background-color: rgb(0, 0, 0);
-    color:white;
+}
+header ul li:nth-child(3) a, header ul li:nth-child(4){
+    border-left: 1px solid rgb(84, 84, 84);
+    border-right: 1px solid rgb(84, 84, 84);
+    height:30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding:0.5rem;
+}
+header ul li:nth-child(3):hover, header ul li:nth-child(4):hover{
+     background-color: rgb(226, 226, 226);
 }
 
-#btn:hover {
-    background-color: rgb(88, 88, 88);
-}
 
 .main-content {
     display: flex;
@@ -154,8 +211,6 @@ header ul li:not(:nth-child(4)) a:hover {
     display: none;
 
 }
-
-
 
 aside.exp {
     width: 0;
@@ -414,12 +469,21 @@ li[data-color='grey']::after {
 /* Media Section ---------------------------*/
 
 @media(min-width: 600px) {
+        .numeofResults{
+    font-size: 10px;
+}
+    .top-header-contenr p{
+    font-size: 11px;
+}
     .shoes-grid img {
         width: 220px;
         height: 220px;
         transition: all 0.2s ease;
         padding: 0.2rem;
     }
+       .currentShoes p:nth-child(2){
+    font-size: 10px;
+}
 
     body.expanded .shoes-grid img {
         width: 265px;
@@ -428,14 +492,25 @@ li[data-color='grey']::after {
 }
 
 @media(min-width: 730px) {
+        .numeofResults{
+    font-size: 12px;
+}
+    .top-header-contenr p{
+    font-size: 12px;
+}
     .box-wrap {
-  
-  width:120px;
-  height:18px;
+
+        width: 120px;
+        height: 18px;
     }
-    #box{
+       .currentShoes p:nth-child(2){
+    font-size: 12px;
+}
+
+    #box {
         font-size: 15px;
     }
+
     .shoes-grid img {
         width: 260px;
         height: 260px;
@@ -450,6 +525,12 @@ li[data-color='grey']::after {
 }
 
 @media(min-width: 810px) {
+        .numeofResults{
+    font-size: 14px;
+}
+    .top-header-contenr p{
+    font-size: 13px;
+}
     .box-wrap {
         width: 150px;
         height: 20px;
@@ -463,6 +544,9 @@ li[data-color='grey']::after {
         width: 275px;
         height: 275px;
     }
+       .currentShoes p:nth-child(2){
+    font-size: 13px;
+}
 
     .color-selection li::after {
         left: 90%;
@@ -474,6 +558,27 @@ li[data-color='grey']::after {
 }
 
 @media(min-width: 1024px) {
+    #line{
+    width:9px;
+    height:1.5px;
+}
+   .numeofResults{
+    font-size: 14px;
+}
+#result{
+    font-size: 12px;
+    letter-spacing: normal;
+
+}
+.top-header-contenr p{
+    font-size: 13px;
+}
+    .topic {
+        padding-left: 0.5rem;
+        font-size: 35px;
+        letter-spacing: 1px;
+    }
+
     .box-wrap {
 
         width: 150px;
@@ -485,8 +590,11 @@ li[data-color='grey']::after {
     }
 
     .currentShoes {
-        font-size: 17px;
+        font-size: 19px;
     }
+    .currentShoes p:nth-child(2){
+    font-size: 13px;
+}
 
     header ul {
         gap: 1rem;

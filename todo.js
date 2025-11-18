@@ -197,11 +197,7 @@ function mouseMove (e){
 
   startX = box.offsetLeft - distanceX;
   
-  
 }
 function mouseUp(){
   document.removeEventListener('mousemove', mouseMove);
-  const boxCoords = box.getBoundingClientRect();
-  console.log(boxCoords.left);
-  console.log(boxCoords.right)
 }
