@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="todo.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="todo.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="top-header-contenr">
+        <i class="fa-solid fa-shoe-prints"></i>
+        <div class="box-wrap">
+            <i id="box" class="fa-solid fa-sun"></i>
+    </div>
+        <ul>
+            <li>Find store</li>
+            <hr id="up">
+            <li>Help</li>
+            <hr id="up">
+            <li>Join us</li>
+        </ul>
+    </div>
+    <div class="moveWrap">
+        <div class="currentShoes">
+            <p> Nike • Adidas • New Balance • Jordan • Reebok • Converse </p>
+        </div>
+    </div>
+
+
+    <header>
+        <h2>EasyShop
+            <i id="expand" class="fa-solid fa-bars"></i>
+        </h2>
+
+        <ul>
+            <li><a href="#">Shoes</a></li>
+            <li><a href="#">support</a></li>
+            <li><a href="#">Cart</a></li>
+            <li><a id="btn" href="#">Login</a></li>
+        </ul>
+    </header>
+
+    <div class="main-content">
+        <aside>
+            <p id="filter">Filer</p>
+            <p id="reset">Reset<i class="fa-solid fa-arrows-rotate"></i></p>
+            <div class="brand-selection">
+                <p class="brand-dropdown">Brand
+                    <i class="fa-solid fa-angle-down"></i>
+                </p>
+                <ul class="brand-select">
+                    <li>All</li>
+                    <li>Nike</li>
+                    <li>Adidas</li>
+                    <li>New Balance</li>
+                </ul>
+            </div>
+            <hr>
+            <div class="brand-selection">
+                <p class="brand-dropdown">Gender
+                    <i class="fa-solid fa-angle-down"></i>
+                </p>
+                <ul class="gender-selection">
+                    <li>All</li>
+                    <li>Male</li>
+                    <li>Female</li>
+                </ul>
+            </div>
+            <hr>
+            <div class="brand-selection">
+                <p class="brand-dropdown">Price
+                    <i class="fa-solid fa-angle-down"></i>
+                </p>
+                <ul class="price-selection">
+                    <li>All</li>
+                    <li>Low</li>
+                    <li>Medium</li>
+                    <li>High</li>
+                </ul>
+            </div>
+            <hr>
+            <div class="brand-selection">
+                <p class="brand-dropdown">Color
+                    <i class="fa-solid fa-angle-down"></i>
+                </p>
+                <ul class="color-selection">
+                    <li data-color="all">All</li>
+                    <li data-color="white">White</li>
+                    <li data-color="black">Black</li>
+                    <li data-color="pink">Pink</li>
+                    <li data-color="light pink">Light Pink</li>
+                    <li data-color="green">Green</li>
+                    <li data-color="grey">Grey</li>
+                    <li data-color="blue">Blue</li>
+                </ul>
+            </div>
+        </aside>
+
+        <main>
+            <p id="message">Sorry, No Results Found  <i class="fa-solid fa-store-slash"></i></p>
+            <ul class="shoes-grid">
+                <li class="shoe" data-brand="new balance" data-price="200" data-gender="male" data-color="grey">
+                    <img src="https://nb.scene7.com/is/image/NB/mr993gl_nb_02_i?$pdpflexf22x$&wid=880&hei=880"
+                        alt="Error">
+                    <p>New Balance 90</p>
+                    <p class="price">$200</p>
+                    <p class="color">3 Colors</p>
+                    <p>Male</p>
+                    <button><i class="fa-solid fa-cart-shopping"></i></button>
+                </li>
+                <li class="shoe" data-brand="adidas" data-price="150" data-gender="male" data-color="grey">
+                    <img src="https://assets.adidas.com/images/w_600,f_auto,q_auto/60d846e58b7f439a8c3d7e775aa67978_9366/Daily_4.0_Shoes_Grey_IF4493_HM1.jpg"
+                        alt="Error">
+                    <p>Adidas</p>
+                    <p class="price">$150</p>
+                    <p class="color">3 Colors</p>
+                    <p>Male</p>
+                    <button><i class="fa-solid fa-cart-shopping"></i></button>
+                </li>
+                <li class="shoe" data-brand="adidas" data-price="150" data-gender="female" data-color="light pink">
+                    <img src="https://cdn11.bigcommerce.com/s-ppsyskcavg/images/stencil/1280x1280/products/73100/298344/ws327ftc_nb_02_i__03026.1747160509.jpg?c=2"
+                        alt="Error">
+                    <p>New Balance S2</p>
+                    <p class="price">$150</p>
+                    <p class="color">7 Colors</p>
+                    <p>Female</p>
+                    <button><i class="fa-solid fa-cart-shopping"></i></button>
+                </li>
+                <li class="shoe" data-brand="nike" data-price="350" data-gender="male" data-color="blue">
+                    <img src="https://static.nike.com/a/images/q_auto:eco/t_product_v1/f_auto/dpr_3.0/h_300,c_limit/0eb75c4b-5ea3-49bd-a83d-93773cc32a4d/image.png"
+                        alt="Error">
+                    <p>Nike Runner</p>
+                    <p class="price">$350</p>
+                    <p class="color">5 Colors</p>
+                    <p>Male</p>
+                    <button><i class="fa-solid fa-cart-shopping"></i></button>
+                </li>
+                <li class="shoe" data-brand="nike" data-price="990" data-gender="male" data-color="black">
+                    <img src="https://cdn.shopify.com/s/files/1/0603/3031/1875/files/main-square_a59a3b58-b460-4d02-80b5-ff4c942d8cb7.jpg?v=1708341127"
+                        alt="Error">
+                    <p>Nike Sport</p>
+                    <p class="price">$990</p>
+                    <p class="color">3 Colors</p>
+                    <p>Male</p>
+                    <button><i class="fa-solid fa-cart-shopping"></i></button>
+                </li>
+                <li class="shoe" data-brand="nike" data-price="370" data-gender="male" data-color="green">
+                    <img src="https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/e1bdc567-2790-4db1-91be-ff34f1e6d880/custom-nike-air-force-1-high.png"
+                        alt="Error">
+                    <p>Nike Casual</p>
+                    <p class="price">$370</p>
+                    <p class="color">7 Colors</p>
+                    <p>Male</p>
+                    <button><i class="fa-solid fa-cart-shopping"></i></button>
+                </li>
+                <li class="shoe" data-brand="nike" data-price="130" data-gender="female" data-color="pink">
+                    <img src="https://static.nike.com/a/images/t_web_pw_592_v2/f_auto/42d5df96-ece4-461f-9b21-a64f2c5ae656/AIR+ZOOM+G.T.+CUT+ACADEMY+NBY.png"
+                        alt="Error">
+                    <p>Nike Runner</p>
+                    <p class="price">$130</p>
+                    <p class="color">3 Colors</p>
+                    <p>Female</p>
+                    <button><i class="fa-solid fa-cart-shopping"></i></button>
+                </li>
+                <li class="shoe" data-brand="nike" data-price="430" data-gender="female" data-color="white">
+                    <img src="https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1714165983-free-metcon-5-mens-workout-shoes-662c18d6def65.jpg?crop=1.00xw:0.801xh;0,0.171xh&resize=980:*"
+                        alt="Error">
+                    <p>Nike R20</p>
+                    <p class="price">$430</p>
+                    <p class="color">2 Colors</p>
+                    <p>Female</p>
+                    <button><i class="fa-solid fa-cart-shopping"></i></button>
+                </li>
+                <li class="shoe" data-brand="adidas" data-price="510" data-gender="female" data-color="pink">
+                    <img src="https://academy.scene7.com/is/image/academy/21224956?$pdp-mobile-gallery-ng$" alt="Error">
+                    <p>Adidas R20</p>
+                    <p class="price">$510</p>
+                    <p class="color">4 Colors</p>
+                    <p>Female</p>
+                    <button><i class="fa-solid fa-cart-shopping"></i></button>
+                </li>
+            </ul>
+        </main>
+    </div>
+
+
+
+</body>
+
+</html>
