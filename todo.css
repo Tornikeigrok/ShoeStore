@@ -3,15 +3,23 @@
     margin: 0;
     box-sizing: border-box;
 }
-
+:root{
+    --greyBgColors:  rgb(226, 191, 121);
+}
 body {
+    font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
     width: 100%;
     height: 100%;
     display: flex;
     flex-direction: column;
     height: 100%;
     overflow: hidden;
-    transition: all 0.7s ease;
+transition: background-color 0.7s ease, color 0.6s ease;
+}
+body.fullDark, 
+body.halfDark {
+transition: background-color 0.7s ease, color 0.6s ease;
 }
 
 html {
@@ -19,6 +27,7 @@ html {
 }
 
 .box-wrap {
+
     border: 1px solid rgb(154, 153, 153);
     width: 100px;
     height: 15px;
@@ -27,11 +36,22 @@ html {
 }
 
 
+#modeMsg{
+    opacity: 0;
+     transition: opacity 0.5s ease;
+     pointer-events: none;
+   position: absolute;
+   left:50%;
+   transform: translate(-50%);
+   font-size: 8px;
+}
+#modeMsg.show{
+    opacity:1;
+}
 .topic {
     font-weight: bold;
     padding-left: 0.5rem;
     margin-top: 0.3rem;
-   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
    display: flex;
    align-items: center;
    justify-content: space-between;
@@ -45,18 +65,8 @@ html {
     transform: translateY(-50%);
     font-size: 11px;
 }
-body.halfDark{
-    background-color: rgb(72, 72, 72);
-}
-#box.halfColor{
-    color:rgb(199, 198, 198);
-}
-#box.fullColor{
-    color:white;
-}
-body.fullDark{
-    background-color: black;
-}
+
+
 .resultTwo{
     display: flex;
     flex-direction: column;
@@ -262,6 +272,7 @@ aside.exp {
     margin: auto;
     padding: 0.2rem;
     border-radius: 2px;
+    transition: all 0.1s ease;
 }
 
 #reset:hover {
@@ -280,15 +291,19 @@ aside.exp {
     object-fit: fill;
     transition: all 0.3s ease;
 }
+.shoe{
+    transition: all 0.3s ease;
+}
 
 body.smallExpand .shoe img {
     width: 150px;
     height: 150px;
 }
 
-.shoes-grid img:hover {
-    transform: scale(1.02) translateY(-5px);
-    background: linear-gradient(to top, rgb(227, 227, 227), rgb(228, 228, 228), white);
+.shoe:hover{
+  transform: translateY(-5px);
+  box-shadow: 0 20px 32px rgba(142, 142, 142, 0.35);
+  border-color: rgba(255,255,255,0.15);
 }
 
 .shoes-grid {
@@ -305,10 +320,10 @@ body.smallExpand .shoe img {
 .shoe button {
     min-width: 70px;
     height: 18px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     background-color: rgb(238, 238, 238);
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border: 1px solid transparent;
     border-radius: 5px;
     padding: 0.2rem;
@@ -317,7 +332,11 @@ body.smallExpand .shoe img {
     overflow: hidden;
     z-index: 1;
 }
-
+.placeBtn{
+    display: flex;
+    justify-content: flex-end;
+     align-items: center;
+}
 .shoe button i {
     font-size: 10px;
 }
@@ -351,7 +370,6 @@ body.smallExpand .shoe img {
 }
 
 .shoe {
-
     padding: 0.3rem;
     box-shadow: 5px 5px 5px rgb(247, 247, 247);
 }
@@ -479,6 +497,8 @@ li[data-color='grey']::after {
     background-color: grey;
 }
 
+
+
 /* Media Section ---------------------------*/
 
 @media(min-width: 600px) {
@@ -571,6 +591,9 @@ li[data-color='grey']::after {
 }
 
 @media(min-width: 1024px) {
+    #modeMsg{
+   font-size: 13px;
+}
     #line{
     width:9px;
     height:1.5px;
@@ -716,4 +739,261 @@ li[data-color='grey']::after {
     #reset {
         font-size: 15px;
     }
+}
+
+
+
+/* ------------------------------
+   AFTERNOON GREY / SUNSET MODE
+   ------------------------------ */
+body.halfDark {
+    background: linear-gradient(
+        160deg,
+        rgb(105, 105, 105) 0%,     
+        rgb(72, 72, 72) 40%,        
+        rgb(58, 58, 58) 60%,      
+        rgb(119, 98, 74) 100%      
+    );
+    color:  rgb(200, 166, 99);
+}
+
+/* Text colors inside grey theme */
+#modeMsg{
+    color:var(--greyBgColors)
+}
+body.halfDark p,
+body.halfDark .price,
+body.halfDark #result,
+body.halfDark #filter,
+body.halfDark .shoe p {
+    color: rgb(235, 235, 235);
+}
+body.halfDark .topic p{
+    color: rgb(213, 213, 213);
+}
+body.halfDark #numeofResults{
+  color:green;
+}
+/* Header for grey theme */
+body.halfDark header {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+body.halfDark .shoe button{
+    background-color: var(--greyBgColors);
+}
+
+body.halfDark .top-header-contenr a{
+   color: var(--greyBgColors);
+}
+
+
+body.halfDark .brand-selection li.bg {
+    background-color: rgb(183, 130, 87) !important;
+}
+
+body.halfDark .shoe:hover{
+  box-shadow: 0 20px 32px rgba(164, 122, 78, 0.35);
+}
+
+body.halfDark #reset:hover {
+   background-color: rgb(183, 130, 87);
+    cursor: pointer;
+}
+body.halfDark header ul li:nth-child(3) a, header ul li:nth-child(4){
+    border-left: 1px solid rgb(158, 131, 87);
+    border-right: 1px solid rgb(158, 131, 87); 
+}
+body.halfDark header ul li:nth-child(3):hover a, header ul li:nth-child(4):hover a{
+    color: rgb(158, 131, 87);
+}
+
+body.halfDark #line{
+    width:7px;
+    background-color:white;
+    height:1px;
+}
+body.halfDark .numeofResults p,
+body.halfDark header ul li a{
+     color: rgb(226, 191, 121);
+}
+/* Aside & main containers */
+body.halfDark .main-content aside,
+body.halfDark .main-content main {
+    background: rgba(187, 186, 186, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Brand dropdowns */
+body.halfDark .brand-dropdown,
+body.halfDark .brand-selection ul li {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.15);
+    color: rgb(233, 233, 233);
+}
+body.halfDark .brand-dropdown{ 
+    color: white;
+    background-color:rgb(158, 131, 87);
+}
+
+/* Hover effect (warm afternoon) */
+body.halfDark .brand-selection ul li:hover,
+body.halfDark .brand-dropdown:hover {
+     background: rgba(228, 153, 67, 0.40);
+}
+
+/* Shoes */
+body.halfDark .shoe {
+    background: rgba(255, 255, 255, 0.04);
+    box-shadow: 0px 0px 8px rgba(244, 206, 135, 0.3);
+}
+
+body.halfDark .shoe button {
+   background-color: grey;
+   color:var(--greyBgColors)
+}
+
+body.halfDark .shoe button:hover::after {
+    background: rgba(255, 220, 180, 0.3);
+}
+body.halfDark #message{
+    color:rgb(158, 131, 87);
+}
+
+
+/* ------------------------------
+       NIGHT MODE
+   ------------------------------ */
+
+body.fullDark #modeMsg{
+   color: rgba(0, 255, 255, 0.5);
+}
+body.fullDark {
+    background: linear-gradient(
+        170deg,
+        rgb(3, 6, 10) 0%,
+        rgb(6, 12, 18) 45%,
+        rgb(10, 17, 24) 80%,
+        rgb(15, 23, 32) 100%
+    );
+    color: rgb(205, 235, 255);
+}
+
+/* Text colors */
+body.fullDark p,
+body.fullDark .price,
+body.fullDark #result,
+body.fullDark #filter,
+body.fullDark .shoe p {
+    color: rgb(215, 240, 255);
+}
+
+body.fullDark .topic p {
+    color: rgb(210, 240, 255);
+}
+
+body.fullDark .numeofResults p {
+    color: rgb(160, 225, 255);
+}
+
+body.fullDark #line {
+    background-color: rgb(0, 230, 255);
+}
+
+/* HEADER */
+body.fullDark header {
+    background: rgba(0, 255, 255, 0.06);
+    border-color: rgba(0, 255, 255, 0.2);
+}
+
+body.fullDark header ul li a {
+    color: rgb(210, 240, 255);
+}
+
+/* ICONS */
+body.fullDark #expand:hover {
+    transform: scale(1.12);
+}
+
+/* TOP HEADER */
+body.fullDark .top-header-contenr a {
+    color: rgb(140, 225, 255);
+}
+
+/* SPECIFIC BORDERED NAV BUTTONS */
+body.fullDark header ul li:nth-child(3) a,
+body.fullDark header ul li:nth-child(4) a {
+    border-left: 1px solid rgba(0, 255, 255, 0.28);
+    border-right: 1px solid rgba(0, 255, 255, 0.28);
+}
+
+body.fullDark header ul li:nth-child(3):hover a,
+body.fullDark header ul li:nth-child(4):hover a {
+    color: rgb(0, 255, 255);
+}
+
+/* ASIDE + MAIN */
+body.fullDark .main-content aside,
+body.fullDark .main-content main {
+    background: rgba(0, 255, 255, 0.04);
+    border-color: rgba(0, 255, 255, 0.12);
+}
+
+/* DROPDOWNS */
+body.fullDark .brand-dropdown {
+    background: rgba(30, 67, 67, 0.11);
+    color: rgb(230, 250, 255);
+    border-color: rgba(0, 255, 255, 0.25);
+}
+
+/* LIST ITEMS */
+body.fullDark .brand-selection ul li {
+    background: rgba(0, 255, 255, 0.06);
+    border-color: rgba(0, 255, 255, 0.25);
+    color: rgb(225, 245, 255);
+}
+
+/* HOVER EFFECT — COOL CYAN */
+body.fullDark .brand-selection ul li:hover,
+body.fullDark .brand-dropdown:hover {
+    background: rgba(0, 255, 255, 0.25);
+}
+
+/* SELECTED ITEM (li.bg) */
+body.fullDark .brand-selection li.bg {
+    background-color: rgba(0, 255, 255, 0.45) !important;
+    border-color: rgba(0, 255, 255, 0.5) !important;
+    color: black;
+}
+
+/* SHOE CARDS */
+body.fullDark .shoe {
+    background: rgba(255, 255, 255, 0.03);
+    box-shadow: 0 15px 28px rgba(17, 142, 142, 0.2);
+}
+
+body.fullDark .shoe:hover {
+    box-shadow: 0 22px 36px rgba(1, 195, 195, 0.32);
+}
+
+/* BUTTONS */
+body.fullDark .shoe button {
+    background-color: rgba(0, 255, 255, 0.15);
+    color: white;
+    border-color: rgba(0, 255, 255, 0.1);
+}
+
+body.fullDark .shoe button:hover::after {
+    background-color: rgba(0, 255, 255, 0.35);
+}
+
+/* RESET BUTTON */
+body.fullDark #reset:hover {
+    background-color: rgba(0, 255, 255, 0.28);
+}
+
+/* MESSAGE */
+body.fullDark #message {
+    color: rgb(0, 255, 255);
 }

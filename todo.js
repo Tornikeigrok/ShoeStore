@@ -7,6 +7,7 @@ const selectGender = document.querySelectorAll('.gender-selection li');
 const selectPrice = document.querySelectorAll('.price-selection li');
 const selectColor = document.querySelectorAll('.color-selection li');
 const allOpts = document.querySelectorAll('.brand-selection ul li');
+const themeMsg = document.getElementById('modeMsg');
 //Aside expand/Collapse
 expandAside.addEventListener('click', () => {
   document.body.classList.toggle('expanded');
@@ -206,7 +207,7 @@ if (savedBg === 'black') {
 
 //Ensure savedTheme doesnt store null on reload
 const savedTheme = localStorage.getItem('coords');
-if(savedTheme !== null){
+if (savedTheme !== null) {
   box.style.left = savedTheme + 'px';
 }
 
@@ -260,6 +261,23 @@ function mouseMove(e) {
 }
 function mouseUp() {
   document.removeEventListener('mousemove', mouseMove);
+
+  const previousTheme = localStorage.getItem('theme');
   localStorage.setItem('coords', box.offsetLeft);
   localStorage.setItem('theme', themeMode);
+
+  if (previousTheme !== themeMode) {
+    let msgText = '';
+
+    if (themeMode === 'black') msgText = 'Changed to Night Theme';
+    else if (themeMode === 'grey') msgText = 'Changed to Afternoon Theme';
+    else msgText = 'Changed to Day Theme';
+
+    themeMsg.innerHTML = msgText;
+    themeMsg.classList.add('show');   
+
+    setTimeout(() => {
+      themeMsg.classList.remove('show'); 
+    }, 1500);
+  }
 }
