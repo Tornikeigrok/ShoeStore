@@ -178,13 +178,22 @@ const box = document.getElementById('box');
 const boxBorder = document.querySelector('.box-wrap');
 
 let distanceX = 0, newX = 0;
+box.addEventListener('mousedown', startDrag);
+box.addEventListener('touchstart', startDrag, {passive: false});
 
-box.addEventListener('mousedown', (e) => {
-  newX = e.clientX;
-
-  document.addEventListener('mousemove', mouseMove);
+function startDrag (e){
+  e.preventDefault();
+  newX = getX(e);
+  
+   document.addEventListener('mousemove', mouseMove);
   document.addEventListener('mouseup', mouseUp);
-})
+
+  document.addEventListener('touchmove', mouseMove, {passive: false});
+  document.addEventListener('touchend', mouseUp);
+}
+function getX(e){
+  return e.touches ? e.touches[0].clientX : e.clientX;
+}
 
 
 //ON RELOAD
@@ -213,17 +222,18 @@ if (savedTheme !== null) {
 
 //mouseMove function
 function mouseMove(e) {
+  e.preventDefault();
+
+  const x = getX(e);
   const coords = boxBorder.getBoundingClientRect();
   const maxRight = coords.width - box.offsetWidth - 4.5;
   const halfWidth = coords.width / 2;
   const quarterWidth = coords.width / 3;
-  console.log(halfWidth);
-  console.log(quarterWidth);
-
   //calculate distance moved
-  distanceX = newX - e.clientX;
-  newX = e.clientX;
+  distanceX = newX - x;
+  newX = x;
 
+  let startX;
   startX = box.offsetLeft - distanceX;
   if (startX < 0) {
     startX = 0;
@@ -261,7 +271,9 @@ function mouseMove(e) {
 }
 function mouseUp() {
   document.removeEventListener('mousemove', mouseMove);
-
+  document.removeEventListener('mouseup', mouseUp);
+  document.removeEventListener('touchmove', mouseMove);
+  document.removeEventListener('touchend', mouseUp);
   const previousTheme = localStorage.getItem('theme');
   localStorage.setItem('coords', box.offsetLeft);
   localStorage.setItem('theme', themeMode);
